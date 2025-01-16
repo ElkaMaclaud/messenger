@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useState, useRef } from 'react';
 import { View, Text, FlatList, TextInput, Button, StyleSheet } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme'; 
 import { io, Socket } from 'socket.io-client';
+import { useDispatch } from 'react-redux';
 
 
 // import { GET_ALL_CHATS, UPDATE_CHATS } from '../../store/slice';
@@ -29,7 +30,7 @@ const Chat = () => {
     const [chats, setChats] = useState(data.user.chats)
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputValue, setInputValue] = useState('');
-    // const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     const chatListRef = useRef<HTMLUListElement>(null);
     const socketRef = useRef<Socket | null>(null);
     const messagesRef = useRef<HTMLDivElement | null>(null);
